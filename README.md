@@ -40,8 +40,33 @@ export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
 export AWS_DEFAULT_REGION=us-east-1
 ```
+Create in the github repository the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in order to the github actions be able to push the app image to ECR. Settings -> Secrets -> Actions -> New Repository Secret.
 
-## Deploy (layer by layer)
+# Steps
+
+## Create network with 2 publics & 2 privates subnet (vpc.tf) (2 differents AZs)
+- 2 publics subnets: To acomodate our application load balancer
+- 2 private subnets: To acomodate our fargate tasks
+- 1 Internet Gateway along with route table
+- 2 NAT Gateways along with its route tables and subnets association.
+
+## Create security groups
+- 1 security group has been created for our load balancer (security_groups.tf)
+- 1 security group has been created for our ecs service. This security group allows our fargate tasks pull image from ecr and allow inbound requests from load balancer security group. (ecs_fargate.tf)
+
+## Create a load balancer (ALB) (elb.tf)
+The Application Load Balancer that is responsible to balance requests among two tasks
+
+## Create Elastic Container Registry(ECR) repository (ecr.tf)
+A repository has been created in order to accommodate our app image. As soon as a push is made on our branch in github, it will push to our repository in aws. (.github/workflows/deploy.yaml)
+
+## Create a Fargate cluster (ecs_fargate.tf)
+1. Fargate cluster
+2. A task definition
+3. A service has been created. It's responsible to guarantee that we will always have our minimum tasks running at all times
+
+## Deploy 
+### (layer by layer)
 
 This way we are going to deploy layer by layer.
 
