@@ -1,17 +1,15 @@
 # AWS automation - ECS Fargate Cluster using Terragrunt
 
 ## Files organization
-![](![](https://github.com/fabriciocarboni/cncf-kcna-exam-topics/blob/main/assets/Diagrams-Terragrunt.png))
+![](https://github.com/fabriciocarboni/terraform-ecs-fargate-terragrunt/blob/main/assets/Diagrams-Terragrunt.png)
 
 ## Diagram stack
-![](![](https://github.com/fabriciocarboni/cncf-kcna-exam-topics/blob/main/assets/ecs-diagram.jpg))
-
+![](https://github.com/fabriciocarboni/terraform-ecs-fargate-terragrunt/blob/main/assets/ecs-diagram.jpg)
 ## Requirements:
 
 Clone this repo:
 ```
-git clone https://github.com/fabriciocarboni//
-terraform-ecs-fargate-terragrunt
+git clone https://github.com/fabriciocarboni/terraform-ecs-fargate-terragrunt
 cd terraform-ecs-fargate-terragrunt
 ```
 
